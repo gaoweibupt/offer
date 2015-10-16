@@ -128,4 +128,53 @@ public class OperateString {
 		}
 	}
 	
+	/**
+	 * 第八章  习题1.6
+	 * <p> 将N*N矩阵数组表示的图像旋转90度<br>
+	 * @param int[][]  image要操作的矩阵图像, int n 表示矩阵的维度N*N
+	 * @return int[][] result 旋转后的矩阵图像数组
+	 * */
+	public static int[][] iamgeRotate(int[][] image, int n){
+		if (n == 1)return image;
+		int length = n / 2 + n % 2;
+		for (int i = 0; i < length; i++){
+			for (int j = 0; j < n / 2; j++){
+				int tmp = image[i][j];
+				image[i][j] = image[n-1-j][i];
+				image[n-1-j][i] = image[n-1-i][n-1-j];
+				image[n-1-i][n-1-j] = image[j][n-1-i];
+				image[j][n-1-i] = tmp;
+			}
+		}
+		return image;
+	}
+	
+	/**
+	 * 第八章  习题1.7
+	 * <p> 清空元素为0 时，其所在的行列<br>
+	 * @param int[][]  arr 输入的m*n数组
+	 * @return int[][] result 返回的数组
+	 * */
+	public static int[][] arrayEmpty(int[][] arr){
+		boolean[] row = new boolean[arr.length];
+		boolean[] column = new boolean[arr[0].length];
+		for (int i = 0; i < row.length; i++){
+			for (int j = 0; j < column.length; j++){
+				if (arr[i][j] == 0){
+					row[i] = true;
+					column[j] = true;
+				}
+			}
+		}
+		for (int i = 0; i < row.length; i++){
+			for (int j = 0; j < column.length; j++){
+				if (row[i] == true || column[j] == true){
+					arr[i][j] = 0;
+				}
+			}
+		}
+		return arr;
+	}
+	
+	
 }
