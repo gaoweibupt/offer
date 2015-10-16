@@ -86,5 +86,17 @@ public class OperateString {
 	 * @param String s ÒªÌæ»»µÄ×Ö·û´®
 	 * @return String result Ìæ»»ºóµÄ×Ö·û´®
 	 * */
+	public static String spaceReplace(String s){
+		StringBuffer stringBuffer = new StringBuffer();
+		for (int i = 0; i < s.length(); i++){
+			if (s.charAt(i) == ' '){
+				stringBuffer.append("%20");
+			}else{
+				stringBuffer.append(s.charAt(i));
+			}
+		}
+		return stringBuffer.toString();
+		
+	}
 	
 }

@@ -33,4 +33,9 @@ public class OperateStringTest {
 		Assert.assertEquals(false, OperateString.isResetEqual("hello", "heloo"));
 
 	}
+	
+	@Test
+	public void testSpaceReplace(){
+		Assert.assertEquals("Mr%20John%20Smith", OperateString.spaceReplace("Mr John Smith"));
+	}
 }
