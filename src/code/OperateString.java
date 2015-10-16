@@ -95,8 +95,37 @@ public class OperateString {
 				stringBuffer.append(s.charAt(i));
 			}
 		}
-		return stringBuffer.toString();
-		
+		return stringBuffer.toString();	
+	}
+	
+	/**
+	 * 第八章  习题1.5
+	 * <p> 实现基本的字符串压缩<br>
+	 * @param String s 要压缩的字符串
+	 * @return String result 压缩后的字符串
+	 * */
+	public static String stringCompress(String s){
+		StringBuffer stringBuffer = new StringBuffer();
+		char flag = s.charAt(0);
+		int num = 1;
+		for (int i = 1; i < s.length(); i++){
+			if (flag == s.charAt(i)){
+				num++;
+			}else{
+				stringBuffer.append(flag);
+				stringBuffer.append(new Integer(num).toString());
+				num = 1;
+				flag = s.charAt(i);
+			}
+		}
+		stringBuffer.append(flag);
+		stringBuffer.append(new Integer(num).toString());
+		if (stringBuffer.length() < s.length()){
+			return stringBuffer.toString();
+		}
+		else{
+			return s;
+		}
 	}
 	
 }

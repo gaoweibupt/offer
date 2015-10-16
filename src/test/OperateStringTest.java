@@ -38,4 +38,9 @@ public class OperateStringTest {
 	public void testSpaceReplace(){
 		Assert.assertEquals("Mr%20John%20Smith", OperateString.spaceReplace("Mr John Smith"));
 	}
+	
+	@Test
+	public void testStringCompress(){
+		Assert.assertEquals("a2b1c5a3", OperateString.stringCompress("aabcccccaaa"));
+	}
 }
