@@ -176,5 +176,26 @@ public class OperateString {
 		return arr;
 	}
 	
+	/**
+	 * 第八章  习题1.8
+	 * <p> 检查字符串1是否为字符串2旋转而成<br>
+	 * @param String s1 为字符串1, String s2字符串2
+	 * @return Boolean result为true时正确，为false时错误
+	 * */
+	public static boolean isRotateString(String s1, String s2){
+		if (s1.length() == s2.length()){
+			String s = s1 + s1;
+			if (s.contains(s2)){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		else{
+			return false;
+		}
+	}
+	
 	
 }

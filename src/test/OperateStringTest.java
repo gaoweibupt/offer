@@ -69,4 +69,10 @@ public class OperateStringTest {
 		}
 	}
 	
+	@Test
+	public void testIsRotateString(){
+		Assert.assertEquals(true, OperateString.isRotateString("waterbottle", "erbottlewat"));
+		Assert.assertEquals(false, OperateString.isRotateString("waterbottle", "erbottlewate"));
+	}
+	
 }
