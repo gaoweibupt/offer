@@ -6,6 +6,7 @@ import java.util.HashMap;
  *@author : gaoweibupt@gmail.com
  *
  * 创建时间： 2015年10月19日上午10:05:43
+ *
  */
 public class LinkList {
 	
@@ -92,5 +93,60 @@ public class LinkList {
 		end.next = Large;
 		return true;
 	}
+	
+	/**
+	 * 第八章 习题2.5
+	 * <p> 给定两个用链表表示的数字，计算他们的和<br>
+	 * 给定的两个链表为反向存储的数字，例如617，为7->1->6
+	 * @param Node n1, Node n2 为两个链表
+	 * @return Node result 为相加后的结果
+	 * */
+	public Node listReversePlus(Node n1, Node n2){
+		Node result = new Node(), end = result;
+		int flag = 0;
+		while(n1 != null && n2 != null){
+			end.data = (n1.data + n2.data + flag) % 10;
+			flag = (n1.data + n2.data + flag) / 10;
+			n1 = n1.next;
+			n2 = n2.next;
+			end.next = new Node();
+			end = end.next;
+		}
+		while(n1 != null){
+			end.data = n1.data;
+			end.next = new Node();
+			if (n1.next != null){
+				end.next = new Node();
+				end = end.next;
+			}
+			n1 = n1.next;
+		}
+		while(n2 != null){
+			end.data = n2.data;
+			if(n2.next != null){
+				end.next = new Node();
+				end = end.next;
+			}
+			n2 = n2.next;
+		}
+		return result;
+	}
+	
+	/**
+	 * 第八章 习题2.5
+	 * <p> 给定两个用链表表示的数字，计算他们的和<br>
+	 * 给定的两个链表为正向存储的数字，例如617，为6->1->7
+	 * @param Node n1, Node n2 为两个链表
+	 * @return Node result 为相加后的结果
+	 * */
+	public Node listPositivePlus(Node n1, Node n2){
+		//TODO
+			
+		return null;
+	}
+	
+	
+	
+	
 	
 }

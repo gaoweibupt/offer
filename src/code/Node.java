@@ -37,4 +37,29 @@ public class Node {
 		Node n = this;
 		head.next = n;
 	}
+	
+	/**
+	 * 返回List的长度
+	 * */
+	public static int getListLength(Node head){
+		int i = 0;
+		Node end = head;
+		while (end != null){
+			i++;
+			end = end.next;
+		}
+		return i;
+	}
+	/**
+	 * 返回List中第k个节点
+	 * */
+	public static Node getNode(Node head, int k){
+		Node node = head;
+		for (int i = 1; i < k; i++){
+			node = node.next;
+			if (node == null)return null;
+		}
+		return node;
+	}
+	
 }
