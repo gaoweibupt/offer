@@ -183,20 +183,26 @@ public class LinkList {
 	/**
 	 * 第八章 习题2.6
 	 * <p> 返回有环链表的头节点 <br>
+	 * 当两个指针相遇时，距离环形链距离为k，k等于链表头到环形链的距离
 	 * @param Node node  有环链表中的节点
 	 * @return Node end 有环链表中的头节点
 	 * */
 	public Node getHeadNode(Node node){
+		Node end1 = node;
 		Node head = node;
 		Node end = node.next;
 		while(end != null){
-			if (head == end){
+			if (end1 == end){
 				return end;
 			}
 			else{
-				head = head.next;
+				end1 = end1.next;
 				end = end.next.next;
 			}
+		}
+		while(head != end){
+			head = head.next;
+			end = end.next;
 		}
 		return end;
 	}
