@@ -141,12 +141,83 @@ public class LinkList {
 	 * */
 	public Node listPositivePlus(Node n1, Node n2){
 		//TODO
-			
-		return null;
+		int n1length = Node.getListLength(n1);
+		int n2length = Node.getListLength(n2);
+		if (n1length == n2length){
+			int result = LinkList.listPositivePlusEqual(n1, n2);
+			if (result == 0)return n1;
+			else{
+				Node head = new Node(result);
+				head.next = n1;
+				return head;
+			}
+		}
+		else{
+		
+			if (n1length > n2length){}
+			else{
+				Node hh = n1;
+				n1 = n2;
+				n2 = hh;
+			}
+			Node n1head = Node.getNode(n1, n1length - n2length + 1);
+			int result = LinkList.listPositivePlusEqual(n1head, n2);
+			if (result == 0){
+				return n1;
+			}
+			else{
+				Node.getNode(n1, n1length - n2length).data = Node.getNode(n1, n1length - n2length).data + result;
+			}
+			return n1;
+		}
+	}
+	
+	public static int listPositivePlusEqual(Node n1, Node n2){
+		if (n1 == null && n2 == null)return 0;
+		int result = n1.data + n2.data + LinkList.listPositivePlusEqual(n1.next, n2.next);
+		n1.data = result % 10;
+		return result / 10;
+	}
+
+
+	/**
+	 * 第八章 习题2.6
+	 * <p> 返回有环链表的头节点 <br>
+	 * @param Node node  有环链表中的节点
+	 * @return Node end 有环链表中的头节点
+	 * */
+	public Node getHeadNode(Node node){
+		Node head = node;
+		Node end = node.next;
+		while(end != null){
+			if (head == end){
+				return end;
+			}
+			else{
+				head = head.next;
+				end = end.next.next;
+			}
+		}
+		return end;
 	}
 	
 	
-	
-	
-	
+	/**
+	 * 第八章 习题2.7
+	 * <p> 检查链表是否回文<br>
+	 * @param Node head  输入的链表
+	 * @return boolean true 为回文 ，false不是回文
+	 * */
+	public boolean isPalindrome(Node head){
+		int length = Node.getListLength(head);
+		for (int i = 0; i < length / 2; i++){
+			if (Node.getNode(head, i).data == Node.getNode(head, length - i).data){
+				
+			}
+			else{
+				return false;
+			}
+		}
+		return true;
+	}
 }
